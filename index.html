@@ -1,13 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>After School Lessons</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <link rel="stylesheet" href="style.css">
+
 </head>
+
 <body>
-    <h1>After School Lessons</h1>
-    
+    <div id="app">
+        <header>
+            <h1>After School Lessons</h1>
+            <button class="view-cart-btn" :disable="cart.length === 0 && !showcart" @clcik="toggleView">
+                <i class="fa-solid fa-cart-shopping"></i>
+                {{ showcart ? 'Back to Lessons' : 'View Cart (' + cartcount + ')' }}
+            </button>
+        </header>
+
+
+
+
 </body>
 
 </html>
