@@ -21,6 +21,27 @@
             </button>
         </header>
 
+        <main>
+            <div v-if="!showcart" class="main-layout">
+                <aside class="sidebar">
+                    <h3>Sort Lessons</h3>
+                    <div class="sort-options">
+                        <label><input type="radio" value="subject" v-model="sortKey"> Subject</label>
+                        <label><input type="radio" value="location" v-model="sortKey"> Location</label>
+                        <label><input type="radio" value="price" v-model="sortKey"> Price</label>
+                        <label><input type="radio" value="spaces" v-model="sortKey"> Spaces</label>
+                        <div class-="order-toggle">
+                            <label><input type="radio" value="asc" v-model="sortOrder"> Ascending</label>
+                            <label><input type="radio" value="desc" v-model="sortOrder"> Descending</label>
+                        </div>
+                    </div>
+                </aside>
+
+
+            </div>
+        </main>
+
+
 
 
 
