@@ -23,7 +23,7 @@
 
         <main>
             <div v-if="!showcart" class="main-layout">
-                <!-- Sidebar / Sort Box -->
+
                 <div class="sort-box">
                     <h3>Sort Lessons</h3>
                     <div class="sort-options">
@@ -42,11 +42,29 @@
                 <section class="lesson-section">
                     <p class="lesson-count">Lessons ({{ filteredAndSorted.length}})</p>
                     <div class="search-container">
-                        <input type="text" v-model="searchQuery" placehyolder="🔍 Search lesson...." class="search-bar" />
+                        <input type="text" v-model="searchQuery" placehyolder="🔍 Search lesson...."
+                            class="search-bar" />
+                    </div>
+
+
+                    <div class=" lesson-grid">
+                        <div v-for="lesson in filteredANDSorted" :key="lesson-id" class="lesson-card">
+
+                            <img :src="lesson.image" :alt="lesson.subject" class="lesson-img" />
+                            <h3>{{ lesson.subject }}</h3>
+                            <p><strong>Location:</strong> {{ lesson.location }}</p>
+                            <p><strong>Price:</strong> {{ lesson.price.toFixed(2) }}</p>
+                            <p><strong>Spaces:</strong> {{ lesson.spaces }}</p>
+                            <div class="rating">
+                                <i v-for="n in 5" :key="n"
+                                    :class="n <= lesson.rating ? 'fa-solid fa-star' : 'fa-regular fa-star'"></i>
+                            </div>
+                            <button :disabled="lesson.spaces === 0" @click="addToCart(lesson)">
+                                {{ lesson.spaces > 0 ? 'Add to Cart' : 'FULL' }}
+                            </button>
+                        </div>
                     </div>
                 </section>
-
-
             </div>
         </main>
 
