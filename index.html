@@ -66,6 +66,43 @@
                     </div>
                 </section>
             </div>
+
+            <section v-else class="cart-section">
+                <div class="cart-items">
+                    <h2> Cart Items </h2>
+                    <div v-if="cart.length === 0">
+                        <p> No lessons in cart. </p>
+                    </div>
+                    <div class="cart.list" v-else>
+                        <div v-for="item in cart" :key="item.cartId" class="cart.item">
+                            <div class="cart-item-info">
+                                <img :src="item.image" :alt="item.subject" class="lesson-img" />
+                            </div>
+
+                            <p><strong>Lesson ID:</strong> {{ item.id }}</p>
+                            <p><strong>Subject:</strong> {{ item.subject }}</p>
+                            <p><strong>Location:</strong> {{ item.location }}</p>
+                            <p><strong>Price:</strong> {{ item.price.toFixed(2) }}</p>
+
+
+                            <div class="rating">
+                                <i v-for="n in 5" :key="n"
+                                    :class="n <= item.rating ? 'fa-solid fa-star' : 'fa-regular fa-star'"></i>
+                            </div>
+
+
+
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+
         </main>
 
 
