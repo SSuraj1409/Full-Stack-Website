@@ -8,21 +8,21 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <link rel="stylesheet" href="style.css">
-
 </head>
 
 <body>
     <div id="app">
         <header>
             <h1>After School Lessons</h1>
-            <button class="view-cart-btn" :disable="cart.length === 0 && !showcart" @clcik="toggleView">
+            <button class="view-cart-btn" :disabled="cart.length === 0 && !showCart" @click="toggleView">
                 <i class="fa-solid fa-cart-shopping"></i>
-                {{ showcart ? 'Back to Lessons' : 'View Cart (' + cartcount + ')' }}
+                {{ showCart ? 'Back to Lessons' : 'View Cart (' + cartCount + ')' }}
             </button>
         </header>
 
         <main>
-            <div v-if="!showcart" class="main-layout">
+
+            <div v-if="!showCart" class="main-layout">
 
                 <div class="sort-box">
                     <h3>Sort Lessons</h3>
@@ -38,27 +38,27 @@
                     </div>
                 </div>
 
-
                 <section class="lesson-section">
-                    <p class="lesson-count">Lessons ({{ filteredAndSorted.length}})</p>
+                    <p class="lesson-count">Lessons ({{ filteredAndSorted.length }})</p>
+
                     <div class="search-container">
-                        <input type="text" v-model="searchQuery" placehyolder="🔍 Search lesson...."
-                            class="search-bar" />
+                        <input type="text" v-model="searchQuery" placeholder="🔍 Search lesson..." class="search-bar" />
                     </div>
 
-
-                    <div class=" lesson-grid">
-                        <div v-for="lesson in filteredANDSorted" :key="lesson-id" class="lesson-card">
+                    <div class="lesson-grid">
+                        <div v-for="lesson in filteredAndSorted" :key="lesson.id" class="lesson-card">
 
                             <img :src="lesson.image" :alt="lesson.subject" class="lesson-img" />
                             <h3>{{ lesson.subject }}</h3>
                             <p><strong>Location:</strong> {{ lesson.location }}</p>
                             <p><strong>Price:</strong> {{ lesson.price.toFixed(2) }}</p>
                             <p><strong>Spaces:</strong> {{ lesson.spaces }}</p>
+
                             <div class="rating">
                                 <i v-for="n in 5" :key="n"
                                     :class="n <= lesson.rating ? 'fa-solid fa-star' : 'fa-regular fa-star'"></i>
                             </div>
+
                             <button :disabled="lesson.spaces === 0" @click="addToCart(lesson)">
                                 {{ lesson.spaces > 0 ? 'Add to Cart' : 'FULL' }}
                             </button>
@@ -69,46 +69,46 @@
 
             <section v-else class="cart-section">
                 <div class="cart-items">
-                    <h2> Cart Items </h2>
+                    <h2>Cart Items</h2>
+
                     <div v-if="cart.length === 0">
-                        <p> No lessons in cart. </p>
+                        <p>No lessons in cart.</p>
                     </div>
-                    <div class="cart.list" v-else>
-                        <div v-for="item in cart" :key="item.cartId" class="cart.item">
+
+                    <div v-else class="cart-list">
+                        <div v-for="item in cart" :key="item.cartId" class="cart-item">
                             <div class="cart-item-info">
                                 <img :src="item.image" :alt="item.subject" class="lesson-img" />
+                                <p><strong>Lesson ID:</strong> {{ item.id }}</p>
+                                <p><strong>Subject:</strong> {{ item.subject }}</p>
+                                <p><strong>Location:</strong> {{ item.location }}</p>
+                                <p><strong>Price:</strong> {{ item.price.toFixed(2) }}</p>
+
+                                <div class="rating">
+                                    <i v-for="n in 5" :key="n"
+                                        :class="n <= item.rating ? 'fa-solid fa-star' : 'fa-regular fa-star'"></i>
+                                </div>
+
+                                <button @click="removeFromCart(item)">Remove</button>
                             </div>
-
-                            <p><strong>Lesson ID:</strong> {{ item.id }}</p>
-                            <p><strong>Subject:</strong> {{ item.subject }}</p>
-                            <p><strong>Location:</strong> {{ item.location }}</p>
-                            <p><strong>Price:</strong> {{ item.price.toFixed(2) }}</p>
-
-
-                            <div class="rating">
-                                <i v-for="n in 5" :key="n"
-                                    :class="n <= item.rating ? 'fa-solid fa-star' : 'fa-regular fa-star'"></i>
-                            </div>
-
-
-
                         </div>
 
-
                     </div>
+                    <div class="cart-total">
+                        Total: £{{ totalPrice.toFixed(2) }}
+                    </div>
+                </div>
+
+                <div class="checkout">
 
                 </div>
 
+
+                
+
             </section>
-
-
-
         </main>
-
-
-
-
-
+    </div>
 </body>
 
 </html>
