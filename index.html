@@ -100,13 +100,27 @@
                 </div>
 
                 <div class="checkout">
+                    <h2>Customer Details</h2>
+                    <div class="checkout-form">
+                        <label>Full Name:</label>
+                        <input type="text" v-model="name" placeholder="Enter Full Name" />
 
+                        <label>Phone Number:</label>
+                        <input type="text" v-model="phone" placeholder="Enter Phone Number" />
+
+                        <button :disabled="!canCheckout" @click="checkout">Checkout</button>
+                    </div>
                 </div>
-
-
-                
-
             </section>
+
+
+            <div v-if="showPopup" class="checkout-popup">
+                <div class="checkout-popup-content">
+                    <h2>Thank You!</h2>
+                    <p>{{ checkoutMessage }}</p>
+                    <button @click="closePopup">Close</button>
+                </div>
+            </div>
         </main>
     </div>
 </body>
