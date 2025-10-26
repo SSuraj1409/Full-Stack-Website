@@ -33,6 +33,16 @@ createApp({
       }
       return filtered;
     },
+
+     cartCount() {
+      return this.cart.length;
+    },
+    totalPrice() {
+      return this.cart.reduce((sum, item) => sum + item.price, 0);
+    },
+    canCheckout() {
+      return /^[A-Za-z\s]+$/.test(this.name) && /^[0-9]+$/.test(this.phone) && this.cart.length > 0;
+    }
    
   }
 }).mount('#app');
