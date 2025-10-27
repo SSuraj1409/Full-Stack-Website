@@ -1,8 +1,7 @@
-const { createApp } = Vue;
-
-createApp({
-    data() {
-        return {
+let webstore = new Vue({
+    el: '#app',
+    data: {
+        
             lessons: lessonData,
             cart: [],
             showCart: false,
@@ -13,7 +12,6 @@ createApp({
             phone: '',
             checkoutMessage: '',
             showPopup: false
-        };
     },
     computed: {
         filteredAndSorted() {
@@ -71,4 +69,4 @@ createApp({
         }
 
     }
-}).mount('#app');
+})

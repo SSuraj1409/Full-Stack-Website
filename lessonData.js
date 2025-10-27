@@ -1,4 +1,4 @@
-const lessonData = [
+let lessonData = [
   {
     id: 1,
     subject: 'Robotics Club',
