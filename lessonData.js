@@ -33,7 +33,7 @@ let lessonData = [
     price: 18,
     spaces: 5,
     rating: 5,
-    image: 'images/astronomy.png'
+    image: 'images/Astronomy.png'
   },
   {
     id: 5,

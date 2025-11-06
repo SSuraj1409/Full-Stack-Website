@@ -51,7 +51,7 @@
                             <img :src="lesson.image" :alt="lesson.subject" class="lesson-img" />
                             <h3>{{ lesson.subject }}</h3>
                             <p><strong>Location:</strong> {{ lesson.location }}</p>
-                            <p><strong>Price:</strong> {{ lesson.price.toFixed(2) }}</p>
+                            <p><strong>Price:</strong> ${{ lesson.price.toFixed(2) }}</p>
                             <p><strong>Spaces:</strong> {{ lesson.spaces }}</p>
 
                             <div class="rating">
@@ -82,7 +82,7 @@
                                 <p><strong>Lesson ID:</strong> {{ item.id }}</p>
                                 <p><strong>Subject:</strong> {{ item.subject }}</p>
                                 <p><strong>Location:</strong> {{ item.location }}</p>
-                                <p><strong>Price:</strong> {{ item.price.toFixed(2) }}</p>
+                                <p><strong>Price:</strong> ${{ item.price.toFixed(2) }}</p>
 
                                 <div class="rating">
                                     <i v-for="n in 5" :key="n"
