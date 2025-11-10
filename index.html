@@ -48,11 +48,19 @@
                     <div class="lesson-grid">
                         <div v-for="lesson in filteredAndSorted" :key="lesson.id" class="lesson-card">
 
+
+
                             <img :src="lesson.image" :alt="lesson.subject" class="lesson-img" />
-                            <h3>{{ lesson.subject }}</h3>
-                            <p><strong>Location:</strong> {{ lesson.location }}</p>
-                            <p><strong>Price:</strong> ${{ lesson.price.toFixed(2) }}</p>
-                            <p><strong>Spaces:</strong> {{ lesson.spaces }}</p>
+
+                            <div class="divider"></div>
+
+                            <div class="lesson-info">
+                                <h3>{{ lesson.subject }}</h3>
+                                <p><strong>Lesson ID:</strong> {{ lesson.id }}</p>
+                                <p><strong>Location:</strong> {{ lesson.location }}</p>
+                                <p><strong>Price:</strong> <span class="price">${{ lesson.price.toFixed(2) }}</span></p>
+                                <p><strong>Spaces:</strong> {{ lesson.spaces }}</p>
+                            </div>
 
                             <div class="rating">
                                 <i v-for="n in 5" :key="n"
